@@ -286,7 +286,7 @@ const skills = [
           <div className="w-72 h-72 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500 p-1 shadow-2xl shadow-violet-500/20">
   
             <img
-              src="public/projects/fottoo.png"
+              src="/projects/fottoo.png"
               alt="Cristian"
               className="w-full h-full rounded-full object-cover"
             />
