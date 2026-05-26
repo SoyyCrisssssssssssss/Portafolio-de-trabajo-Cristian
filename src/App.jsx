@@ -507,7 +507,7 @@ const skills = [
       </a>
 
       <a
-        href="/Currículum CV Ingeniero Desarrollo Software.pdf"
+        href="/Currículum CV Cristian Jesus.pdf"
         className="border border-violet-500 text-violet-400 hover:bg-violet-500 hover:text-white transition px-8 py-4 rounded-2xl font-medium"
       >
         Descargar CV
