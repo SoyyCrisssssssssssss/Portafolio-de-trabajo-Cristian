@@ -592,7 +592,7 @@ const skills = [
 
       {/* LinkedIn */}
       <a
-        href="www.linkedin.com/in/cristian-jesús-cruz-gonzález-055a87304"
+        href="https://www.linkedin.com/in/cristian-jesús-cruz-gonzález-055a87304"
         target="_blank"
         className="bg-zinc-900 border border-white/10 rounded-3xl p-6 hover:border-violet-500 hover:-translate-y-1 transition block"
       >
