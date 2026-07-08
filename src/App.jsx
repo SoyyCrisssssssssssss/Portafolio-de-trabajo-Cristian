@@ -5,7 +5,8 @@ import { FaGithub, FaLinkedin, FaEnvelope,   FaHtml5,
   FaPython,
   FaNodeJs,
   FaReact,
-  FaGitAlt, FaDatabase} from 'react-icons/fa'
+  FaGitAlt, FaDatabase,
+  FaWhatsapp} from 'react-icons/fa'
   import {
   SiExpress,
   SiAndroidstudio,
@@ -18,6 +19,38 @@ import { FaGithub, FaLinkedin, FaEnvelope,   FaHtml5,
 
 import { useState } from 'react'
 export default function Portfolio() {
+  const [sent, setSent] = useState(false);
+const [loading, setLoading] = useState(false);
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  setLoading(true);
+
+  const form = e.target;
+
+  const response = await fetch(
+    "https://formspree.io/f/xjgqqkep",
+    {
+      method: "POST",
+      body: new FormData(form),
+      headers: {
+        Accept: "application/json",
+      },
+    }
+  );
+
+  setLoading(false);
+
+  if (response.ok) {
+    setSent(true);
+    form.reset();
+
+    setTimeout(() => {
+      setSent(false);
+    }, 5000);
+  }
+};
   const [selectedProject, setSelectedProject] = useState(null)
   const projects = [
     {
@@ -166,34 +199,58 @@ export default function Portfolio() {
       ]
     },
      {
-      title: 'App Servi Pro',
+        title: 'App Servi Pro',
+        description:
+          'App que ayuda a los usuarios a encontrar servicios locales como plomeros, electricistas, jardineros, entre otros, con opciones de reserva y calificación.',
+        tech: ['React native', 'JavaScript', 'Expo', 'Firebase'],
+        github: 'https://github.com/SoyyCrisssssssssssss/SERVI-PRO',
+        features: [
+          'Login y registro de usuarios.',
+          'Búsqueda de servicios locales.',
+          'Reserva de servicios.',
+          'Calificación de servicios.',
+        ],
+        images: [
+          {
+            src: '/projects/servi/login.png ',
+            caption: 'Pantalla de login de la app.',
+          },
+          {
+            src: '/projects/servi/regis.png',
+            caption: 'Pantalla de registro de la app.',
+          },
+          {
+            src: '/projects/servi/ini.png',
+            caption: 'Pantalla de inicio de la app donde se muestran los servicios disponibles provedores y descuentos.',
+          },
+        
+        ]
+     },
+      {
+      title: 'WC_Predictor_AI',
       description:
-        'App que ayuda a los usuarios a encontrar servicios locales como plomeros, electricistas, jardineros, entre otros, con opciones de reserva y calificación.',
-      tech: ['React native', 'JavaScript', 'Expo', 'Firebase'],
-      github: 'https://github.com/SoyyCrisssssssssssss/SERVI-PRO',
+        'Desarrollo de sistema predictivo deportivo con Python, XGBoost, Scikit-learn, Pandas y SQLite. Implementa modelos de Machine Learning, ranking ELO y simulaciones Monte Carlo para analizar rendimiento de equipos, generar probabilidades de resultados y estimar marcadores de partidos.',
+      tech: ['Python', 'XGBoost', 'SQLite', 'Matplotlib', 'Scikit-learn'],
+      github: 'https://github.com/SoyyCrisssssssssssss/WC_Predictor_AI',
       features: [
-        'Login y registro de usuarios.',
-        'Búsqueda de servicios locales.',
-        'Reserva de servicios.',
-        'Calificación de servicios.',
+        'Predicción de resultados de partidos (victoria, empate o derrota)',
+        'Simulación de miles de escenarios mediante Monte Carlo.',
+        'Análisis del rendimiento histórico de equipos.',
+        'Cálculo y actualización de rating ELO.',
+        'Entrenamiento y ajuste de modelos predictivos con métricas de rendimiento.',
       ],
        images: [
         {
-          src: '/projects/servi/login.png ',
-          caption: 'Pantalla de login de la app.',
+          src: '/projects/predictor/predict1 (2).png ',
+          caption: 'Simulación de partidos y predicción de resultados con probabilidades como victoria, empate o derrota, además de estimación de marcadores y estadisticas como si ambos meten gol o no.',
         },
         {
-          src: '/projects/servi/regis.png',
-          caption: 'Pantalla de registro de la app.',
+          src: '/projects/predictor/predict1.png',
+          caption: 'Resultados de marcadores mas probables con una excatitud de mas del 50% en la predicción de resultados de partidos.',
         },
-        {
-          src: '/projects/servi/ini.png',
-          caption: 'Pantalla de inicio de la app donde se muestran los servicios disponibles provedores y descuentos.',
-        },
-       
       ]
     },
-  ];
+   ];
 
 const skills = [
   { name: 'HTML', icon: <FaHtml5 /> },
@@ -399,7 +456,68 @@ const skills = [
           </div>
         </div>
       </section>
+   
+      {/* Formulario de contacto */}
+      <div className="max-w-3xl mx-auto bg-zinc-900 border border-white/10 rounded-3xl p-8">
 
+        <h3 className="text-3xl font-bold mb-6">
+          Envíame un mensaje
+        </h3>
+
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-5"
+        >
+
+          <input
+            type="hidden"
+            name="_subject"
+            value="Nuevo mensaje desde mi portafolio"
+          />
+
+          <input
+            type="text"
+            name="name"
+            placeholder="Nombre"
+            required
+            className="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-3 outline-none focus:border-violet-500"
+          />
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Correo electrónico"
+            required
+            className="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-3 outline-none focus:border-violet-500"
+          />
+
+          <textarea
+            name="message"
+            rows="5"
+            placeholder="Escribe tu mensaje..."
+            required
+            className="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-3 outline-none focus:border-violet-500"
+          />
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="bg-violet-600 hover:bg-violet-700 transition px-8 py-3 rounded-xl font-medium disabled:opacity-50"
+          >
+            {loading ? "Enviando..." : "Enviar mensaje"}
+          </button>
+
+        </form>
+
+
+        {/* Notificación */}
+        {sent && (
+          <div className="mt-6 bg-green-500/10 border border-green-500/30 text-green-400 px-5 py-4 rounded-xl">
+            ✅ Mensaje enviado correctamente. Gracias por contactarme.
+          </div>
+        )}
+
+      </div>
 {/* Contacto */}
 <section id="contacto" className="py-28 px-6">
   <div className="max-w-5xl mx-auto text-center">
@@ -417,7 +535,10 @@ const skills = [
     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
 
       {/* Email */}
-      <div className="bg-zinc-900 border border-white/10 rounded-3xl p-6 hover:border-violet-500 transition">
+      <a
+        href="mailto:cristianjesuscg7@gmail.com"
+        className="bg-zinc-900 border border-white/10 rounded-3xl p-6 hover:border-violet-500 hover:-translate-y-1 transition block"
+      >
 
         <FaEnvelope className="mx-auto mb-4 text-violet-400 text-3xl" />
 
@@ -426,13 +547,35 @@ const skills = [
         </h4>
 
         <p className="text-gray-400 text-sm">
-          crostiancruzgonzales.07@gmail.com
+          Envíame un mensaje
         </p>
 
-      </div>
+      </a>
+      {/* WhatsApp */}
+      <a
+        href="https://wa.me/522462219635"
+        target="_blank"
+        className="bg-zinc-900 border border-white/10 rounded-3xl p-6 hover:border-green-500 hover:-translate-y-1 transition block"
+      >
+
+        <FaWhatsapp className="mx-auto mb-4 text-green-400 text-3xl" />
+
+        <h4 className="text-xl font-bold mb-2">
+          WhatsApp
+        </h4>
+
+        <p className="text-gray-400 text-sm">
+          Contacto directo
+        </p>
+
+      </a>
 
       {/* GitHub */}
-      <div className="bg-zinc-900 border border-white/10 rounded-3xl p-6 hover:border-violet-500 transition">
+     <a
+        href="https://github.com/"
+        target="_blank"
+        className="bg-zinc-900 border border-white/10 rounded-3xl p-6 hover:border-violet-500 hover:-translate-y-1 transition block"
+      >
 
         <FaGithub className="mx-auto mb-4 text-violet-400 text-3xl" />
 
@@ -441,13 +584,18 @@ const skills = [
         </h4>
 
         <p className="text-gray-400 text-sm">
-          github.com/SoyyCrisssssssssssss
+          Ver mis proyectos
         </p>
 
-      </div>
+      </a>
+
 
       {/* LinkedIn */}
-      <div className="bg-zinc-900 border border-white/10 rounded-3xl p-6 hover:border-violet-500 transition">
+      <a
+        href="www.linkedin.com/in/cristian-jesús-cruz-gonzález-055a87304"
+        target="_blank"
+        className="bg-zinc-900 border border-white/10 rounded-3xl p-6 hover:border-violet-500 hover:-translate-y-1 transition block"
+      >
 
         <FaLinkedin className="mx-auto mb-4 text-violet-400 text-3xl" />
 
@@ -456,10 +604,11 @@ const skills = [
         </h4>
 
         <p className="text-gray-400 text-sm">
-          https://www.linkedin.com/in/cristian-jes�s-cruz-gonz�lez-055a87304/
+          Conecta conmigo
         </p>
 
-      </div>
+      </a>
+      
 
       {/* Ubicación */}
       <div className="bg-zinc-900 border border-white/10 rounded-3xl p-6 hover:border-violet-500 transition">
@@ -479,42 +628,14 @@ const skills = [
       </div>
 
     </div>
-
-    {/* Botones */}
-    <div className="flex flex-wrap items-center justify-center gap-6">
-
-      <a
-        href="mailto:crostiancruzgonzales.07@gmail.com"
-        className="bg-violet-600 hover:bg-violet-700 transition px-8 py-4 rounded-2xl font-medium shadow-lg"
-      >
-        Enviar Correo
-      </a>
-
-      <a
-        href="https://github.com/SoyyCrisssssssssssss"
-        target="_blank"
-        className="border border-white/20 hover:border-violet-500 hover:text-violet-400 transition px-8 py-4 rounded-2xl font-medium"
-      >
-        Ver GitHub
-      </a>
-
-       <a
-        href="https://www.linkedin.com/in/cristian-jes�s-cruz-gonz�lez-055a87304/"
-        target="_blank"
-        className="border border-white/20 hover:border-violet-500 hover:text-violet-400 transition px-8 py-4 rounded-2xl font-medium"
-      >
-        Ir a LinkedIn
-      </a>
-
-      <a
-        href="/Currículum CV Cristian_Jesús.pdf"
-        className="border border-violet-500 text-violet-400 hover:bg-violet-500 hover:text-white transition px-8 py-4 rounded-2xl font-medium"
-      >
-        Descargar CV
-      </a>
-
-    </div>
   </div>
+    <center><a
+      href="Currículum CV Ingeniero-_Cristian_Jesus_Cruz_Gonzañez.pdf"
+      download
+      className="border border-violet-500 text-violet-400 hover:bg-violet-500 hover:text-white transition px-8 py-4 rounded-2xl font-medium"
+    >
+      Descargar CV
+    </a></center>
 </section>
 {selectedProject && (
   <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 overflow-y-auto p-6">
@@ -607,6 +728,8 @@ const skills = [
     </div>
   </div>
 )}
+
+
 
       {/* Footer */}
       <footer className="border-t border-white/10 py-8 text-center text-gray-500 text-sm">
