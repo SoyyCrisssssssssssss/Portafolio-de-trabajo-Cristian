@@ -147,18 +147,62 @@ const handleSubmit = async (e) => {
       ]
     },
      {
-      title: 'Simluador App Movil Biblioteca de Musica',
+      title: 'Servicio Web de gestion de tareas',
       description:
-        'Simulacion de App movil de biblioteca de musica desarrollada en Kotlin .',
-      tech: ['Android Studio', 'Kotlin', 'Jetpack Compose'],
-      github: 'https://github.com/SoyyCrisssssssssssss/Emulador-App-movil-Android-Studio',
+        'Servicio web para gestionar tareas, con autenticación de usuarios, creación, edición y eliminación de tareas, y almacenamiento en base de datos MongoDB e integracion de IA Ollama que analiza automáticamente todas tus tareas y recibe recomendaciones inteligentes.',
+      tech: ['API REST', 'Python', 'React', 'MongoDB', 'Ollama'],
+      github: 'https://github.com/SoyyCrisssssssssssss/EduSync',
       features: [
-        
+        'Autenticación y registro de usuarios',
+        'Gestión completa de tareas: creación, edición y eliminación',
+        'Organización y seguimiento del estado de las tareas',
+        'Dashboard con resumen de actividades y tareas',
+        'Estadísticas y gráficas para visualizar el progreso',
+        'Análisis inteligente de tareas mediante IA con Ollama',
+        'Recomendaciones inteligentes basadas en las tareas del usuario',
+        'Persistencia de información mediante MongoDB',
+        'Perfil de usuario para consultar y administrar información personal',
+        'API REST desarrollada con Python',
       ],
        images: [
         {
-          src: '/projects/movil/menu.png',
-          caption: 'Menu de de la biblioteca de música sin funsiones.',
+          src: '/projects/edusync/dashboard.png',
+          caption: 'Dashboard principal donde el usuario puede visualizar una bienvenida, el resumen de sus tareas y la información más relevante de su actividad.',
+        },
+         {
+          src: '/projects/edusync/estados.png',
+          caption:
+            'Visualización del estado de las tareas mediante gráficas que permiten conocer el progreso y distribución de las actividades.',
+       },
+        {
+          src: '/projects/edusync/crear.png',
+          caption:
+            'Formulario para crear nuevas tareas, permitiendo registrar la información necesaria para organizar las actividades del usuario.',
+        },
+        {
+          src: '/projects/edusync/tasks.png',
+          caption:
+            'Listado de tareas donde el usuario puede consultar, administrar y dar seguimiento a sus actividades.',
+        },
+        {
+          src: '/projects/edusync/ia.png',
+          caption:
+            'Módulo de inteligencia artificial que analiza las tareas del usuario y proporciona recomendaciones para mejorar su organización y productividad.',
+        },
+        {
+          src: '/projects/edusync/mongo.png',
+          caption:
+            'Gestión y almacenamiento de la información de usuarios y tareas mediante una base de datos MongoDB.',
+        },
+        {
+          src: '/projects/edusync/profile.png',
+          caption:
+            'Perfil del usuario donde puede consultar y administrar su información personal dentro de la plataforma.',
+        },
+        {
+          src: '/projects/edusync/estadisiticas.png',
+          caption:
+            'Sección de estadísticas con gráficas y datos que permiten analizar el rendimiento y progreso de las tareas.',
         },
       ]
     },
@@ -331,7 +375,7 @@ const skills = [
               </a>
 
               <a
-                href="https://github.com"
+                href="https://github.https://github.com/SoyyCrisssssssssssss"
                 target="_blank"
                 className="border border-white/20 hover:border-violet-500 hover:text-violet-400 transition px-6 py-3 rounded-2xl font-medium"
               >
@@ -572,7 +616,7 @@ const skills = [
 
       {/* GitHub */}
      <a
-        href="https://github.com/"
+        href="https://github.com/SoyyCrisssssssssssss"
         target="_blank"
         className="bg-zinc-900 border border-white/10 rounded-3xl p-6 hover:border-violet-500 hover:-translate-y-1 transition block"
       >
@@ -630,7 +674,7 @@ const skills = [
     </div>
   </div>
     <center><a
-      href="Currículum CV Ingeniero-_Cristian_Jesus_Cruz_Gonzañez.pdf"
+      href="Currículum_CV_Cristian_Jesus_Cruz_Gonzalez.pdf"
       download
       className="border border-violet-500 text-violet-400 hover:bg-violet-500 hover:text-white transition px-8 py-4 rounded-2xl font-medium"
     >
