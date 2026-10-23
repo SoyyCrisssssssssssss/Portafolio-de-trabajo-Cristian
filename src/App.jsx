@@ -13,11 +13,11 @@ import { FaGithub, FaLinkedin, FaEnvelope,   FaHtml5,
   SiKotlin,
   SiMongodb,
   SiFirebase,
-  SiMysql,
-  SiTailwindcss
+  SiMysql
 } from 'react-icons/si'
 
 import { useState } from 'react'
+import './App.css'
 export default function Portfolio() {
   const [sent, setSent] = useState(false);
 const [loading, setLoading] = useState(false);
@@ -233,8 +233,11 @@ const handleSubmit = async (e) => {
         },
         {
           src: '/projects/tv/pelis.png',
-          src: '/projects/tv/reproductor.png',
           caption: 'Reproductor de peliculas (solo reproduce la que esta guardada en el proyecto).',
+        },
+        {
+          src: '/projects/tv/reproductor.png',
+          caption: 'Vista del reproductor multimedia del simulador.',
         },
           {
           src: '/projects/tv/game.png',
@@ -315,11 +318,11 @@ const skills = [
 ];
 
   return (
-    <div className="min-h-screen bg-black text-white font-sans">
+    <div className="portfolio-shell min-h-screen bg-black text-white font-sans">
       {/* Navbar */}
-      <header className="fixed top-0 left-0 w-full backdrop-blur-md bg-black/40 border-b border-white/10 z-50">
+      <header className="site-header fixed top-0 left-0 w-full backdrop-blur-md bg-black/40 border-b border-white/10 z-50">
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-          <h1 className="text-2xl font-bold tracking-wide">
+          <h1 className="brand-mark text-2xl font-bold tracking-wide">
             Cristian<span className="text-violet-500">Dev</span>
           </h1>
 
@@ -346,10 +349,10 @@ const skills = [
       {/* Hero */}
       <section
         id="inicio"
-        className="min-h-screen flex items-center justify-center px-6"
+        className="hero-section min-h-screen flex items-center justify-center px-6"
       >
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-center">
-          <div>
+          <div className="hero-copy reveal-up">
             <p className="text-violet-400 mb-3 text-lg">
               Desarrollador Web Junior
             </p>
@@ -369,27 +372,28 @@ const skills = [
             <div className="flex flex-wrap gap-4">
               <a
                 href="#proyectos"
-                className="bg-violet-600 hover:bg-violet-700 transition px-6 py-3 rounded-2xl font-medium shadow-lg"
+                className="button-primary bg-violet-600 hover:bg-violet-700 transition px-6 py-3 rounded-2xl font-medium shadow-lg"
               >
                 Ver Proyectos
               </a>
 
               <a
-                href="https://github.https://github.com/SoyyCrisssssssssssss"
+                href="https://github.com/SoyyCrisssssssssssss"
                 target="_blank"
-                className="border border-white/20 hover:border-violet-500 hover:text-violet-400 transition px-6 py-3 rounded-2xl font-medium"
+                rel="noreferrer"
+                className="button-secondary border border-white/20 hover:border-violet-500 hover:text-violet-400 transition px-6 py-3 rounded-2xl font-medium"
               >
                 GitHub
               </a>
             </div>
           </div>
 
-          <div className="w-72 h-72 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500 p-1 shadow-2xl shadow-violet-500/20">
+          <div className="profile-frame reveal-scale w-72 h-72 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500 p-1 shadow-2xl shadow-violet-500/20">
   
             <img
               src="/projects/fottoo.png"
               alt="Cristian"
-              className="w-full h-full rounded-full object-cover"
+              className="w-full h-full rounded-full object-cover profile-image"
             />
 
           </div>
@@ -397,13 +401,13 @@ const skills = [
       </section>
 
       {/* Sobre mí */}
-      <section id="sobre" className="py-28 px-6 bg-zinc-950">
+      <section id="sobre" className="content-section py-28 px-6 bg-zinc-950">
         <div className="max-w-5xl mx-auto">
           <h3 className="text-4xl font-bold mb-10">
             Sobre <span className="text-violet-500">mí</span>
           </h3>
 
-          <div className="bg-zinc-900 border border-white/10 rounded-3xl p-8 shadow-xl">
+          <div className="glass-card reveal-up bg-zinc-900 border border-white/10 rounded-3xl p-8 shadow-xl">
             <p className="text-gray-300 leading-relaxed text-lg">
              Soy desarrollador de software enfocado en la creación de aplicaciones web y móviles modernas, escalables y centradas en la experiencia del usuario.
               Tengo experiencia trabajando con distintas tecnologías frontend y backend, desarrollando soluciones funcionales, 
@@ -425,7 +429,7 @@ const skills = [
             {skills.map((skill) => (
               <div
                 key={skill.name}
-                className="bg-zinc-900 border border-white/10 rounded-2xl p-6 text-center hover:border-violet-500 hover:-translate-y-2 transition duration-300 shadow-lg"
+                className="interactive-card bg-zinc-900 border border-white/10 rounded-2xl p-6 text-center hover:border-violet-500 hover:-translate-y-2 transition duration-300 shadow-lg"
               >
                 <div className="text-4xl text-violet-400 mb-4">
                   {skill.icon}
@@ -451,9 +455,9 @@ const skills = [
             {projects.map((project) => (
               <div
                 key={project.title}
-                className="bg-zinc-900 border border-white/10 rounded-3xl overflow-hidden hover:border-violet-500 transition duration-300 shadow-xl"
+                className="project-card bg-zinc-900 border border-white/10 rounded-3xl overflow-hidden hover:border-violet-500 transition duration-300 shadow-xl"
               >
-                <div className="h-52 bg-gradient-to-br from-violet-500/30 to-fuchsia-500/20 flex items-center justify-center text-5xl font-bold text-white">
+                <div className="project-cover h-52 bg-gradient-to-br from-violet-500/30 to-fuchsia-500/20 flex items-center justify-center text-5xl font-bold text-white">
                   {project.title.charAt(0)}
                 </div>
 
@@ -502,7 +506,7 @@ const skills = [
       </section>
    
       {/* Formulario de contacto */}
-      <div className="max-w-3xl mx-auto bg-zinc-900 border border-white/10 rounded-3xl p-8">
+      <div className="contact-form-card max-w-3xl mx-auto bg-zinc-900 border border-white/10 rounded-3xl p-8">
 
         <h3 className="text-3xl font-bold mb-6">
           Envíame un mensaje
@@ -510,7 +514,7 @@ const skills = [
 
         <form
           onSubmit={handleSubmit}
-          className="space-y-5"
+          className="contact-form space-y-5"
         >
 
           <input
@@ -546,7 +550,7 @@ const skills = [
           <button
             type="submit"
             disabled={loading}
-            className="bg-violet-600 hover:bg-violet-700 transition px-8 py-3 rounded-xl font-medium disabled:opacity-50"
+            className="button-primary bg-violet-600 hover:bg-violet-700 transition px-8 py-3 rounded-xl font-medium disabled:opacity-50"
           >
             {loading ? "Enviando..." : "Enviar mensaje"}
           </button>
@@ -674,7 +678,7 @@ const skills = [
     </div>
   </div>
     <center><a
-      href="Currículum_CV_Cristian_Jesus_Cruz_Gonzalez.pdf"
+      href="CV_Ingeniero_Cristian _Jesus_Cruz_Gonzalezz.pdf"
       download
       className="border border-violet-500 text-violet-400 hover:bg-violet-500 hover:text-white transition px-8 py-4 rounded-2xl font-medium"
     >
@@ -684,7 +688,7 @@ const skills = [
 {selectedProject && (
   <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 overflow-y-auto p-6">
 
-    <div className="max-w-5xl mx-auto bg-zinc-900 rounded-3xl p-8 relative">
+    <div className="project-modal max-w-5xl mx-auto bg-zinc-900 rounded-3xl p-8 relative">
 
       {/* Cerrar */}
       <button
